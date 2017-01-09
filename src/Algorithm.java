@@ -48,6 +48,8 @@ public class Algorithm {
     }
 
     HashMap<String,Variable> variables;
+
+    
     public boolean acThreeForLookahead(HashMap<String,Variable> variables)
     {
         this.variables = variables;
@@ -159,7 +161,7 @@ public class Algorithm {
                 }
             }
 
-            //2. Der Schwede hält sich einen Hund.
+            //2. Der Schwede hï¿½lt sich einen Hund.
             if(((tupelV1.contains("Schwede") && v2.getName().equals("Tier")) || (tupelV1.contains("Hund") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
@@ -184,14 +186,14 @@ public class Algorithm {
                 }
             }
 
-            //3. Der Däne trinkt gern Tee.
-            if(((tupelV1.contains("Däne") && v2.getName().equals("Drink")) || (tupelV1.contains("Tee") && v2.getName().equals("Nation"))))
+            //3. Der Dï¿½ne trinkt gern Tee.
+            if(((tupelV1.contains("Dï¿½ne") && v2.getName().equals("Drink")) || (tupelV1.contains("Tee") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
                     Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Däne") && tupelV2.contains("Tee")) || tupelV1.contains("Tee") && tupelV2.contains("Däne"))
+                    if((tupelV1.contains("Dï¿½ne") && tupelV2.contains("Tee")) || tupelV1.contains("Tee") && tupelV2.contains("Dï¿½ne"))
                         if(directConstraint(tupelV1, tupelV2))
                         {
                             found = true;
@@ -209,8 +211,8 @@ public class Algorithm {
                 }
             }
 
-            //4. Das grüne Haus steht links neben dem weißen Haus.
-            if((tupelV1.contains("Grün") || tupelV1.contains("Weiß")) && v2.getName().equals("Farbe"))
+            //4. Das grï¿½ne Haus steht links neben dem weiï¿½en Haus.
+            if((tupelV1.contains("Grï¿½n") || tupelV1.contains("Weiï¿½")) && v2.getName().equals("Farbe"))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
@@ -233,14 +235,14 @@ public class Algorithm {
                 }
             }
 
-            //5. Der Besitzer des grünen Hauses trinkt Kaffee
-            if(((tupelV1.contains("Grün") && v2.getName().equals("Drink")) || (tupelV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
+            //5. Der Besitzer des grï¿½nen Hauses trinkt Kaffee
+            if(((tupelV1.contains("Grï¿½n") && v2.getName().equals("Drink")) || (tupelV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
                     Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Grün") && tupelV2.contains("Kaffee")) || tupelV1.contains("Kaffee") && tupelV2.contains("Grün"))
+                    if((tupelV1.contains("Grï¿½n") && tupelV2.contains("Kaffee")) || tupelV1.contains("Kaffee") && tupelV2.contains("Grï¿½n"))
                     if(directConstraint(tupelV1, tupelV2))
                     {
                         found = true;
@@ -489,11 +491,11 @@ public class Algorithm {
     private boolean gruen_links_weiss(Tupel tupelV1, Tupel tupelV2) {
 
         Tupel gruen, weiss;
-        if(tupelV1.getPart().equals("Grün") && tupelV2.getPart().equals("Weiß"))
+        if(tupelV1.getPart().equals("Grï¿½n") && tupelV2.getPart().equals("Weiï¿½"))
         {
             gruen = tupelV1;
             weiss = tupelV2;
-        }else if(tupelV2.getPart().equals("Grün") && tupelV1.getPart().equals("Weiß"))
+        }else if(tupelV2.getPart().equals("Grï¿½n") && tupelV1.getPart().equals("Weiï¿½"))
         {
             gruen = tupelV2;
             weiss = tupelV1;
