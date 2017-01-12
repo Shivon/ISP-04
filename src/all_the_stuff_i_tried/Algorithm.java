@@ -48,8 +48,6 @@ public class Algorithm {
     }
 
     HashMap<String,Variable> variables;
-
-    
     public boolean acThreeForLookahead(HashMap<String,Variable> variables)
     {
         this.variables = variables;
@@ -125,6 +123,7 @@ public class Algorithm {
 
     public boolean revise(Variable v1, Variable v2)
     {
+        // System.out.println("in REVISE: v1 = " + v1.toString() + ", v2 = " + v2.toString());
 
         boolean delete = false;
         Iterator iteratorV1 = v1.iterator();
@@ -161,7 +160,7 @@ public class Algorithm {
                 }
             }
 
-            //2. Der Schwede h�lt sich einen Hund.
+            //2. Der Schwede hält sich einen Hund.
             if(((tupelV1.contains("Schwede") && v2.getName().equals("Tier")) || (tupelV1.contains("Hund") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
@@ -186,14 +185,14 @@ public class Algorithm {
                 }
             }
 
-            //3. Der D�ne trinkt gern Tee.
-            if(((tupelV1.contains("D�ne") && v2.getName().equals("Drink")) || (tupelV1.contains("Tee") && v2.getName().equals("Nation"))))
+            //3. Der Daene trinkt gern Tee.
+            if(((tupelV1.contains("Daene") && v2.getName().equals("Drink")) || (tupelV1.contains("Tee") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
                     Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("D�ne") && tupelV2.contains("Tee")) || tupelV1.contains("Tee") && tupelV2.contains("D�ne"))
+                    if((tupelV1.contains("Daene") && tupelV2.contains("Tee")) || tupelV1.contains("Tee") && tupelV2.contains("Daene"))
                         if(directConstraint(tupelV1, tupelV2))
                         {
                             found = true;
@@ -211,8 +210,8 @@ public class Algorithm {
                 }
             }
 
-            //4. Das gr�ne Haus steht links neben dem wei�en Haus.
-            if((tupelV1.contains("Gr�n") || tupelV1.contains("Wei�")) && v2.getName().equals("Farbe"))
+            //4. Das gruene Haus steht links neben dem wei�en Haus.
+            if((tupelV1.contains("Gruen") || tupelV1.contains("Weiss")) && v2.getName().equals("Farbe"))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
@@ -235,14 +234,14 @@ public class Algorithm {
                 }
             }
 
-            //5. Der Besitzer des gr�nen Hauses trinkt Kaffee
-            if(((tupelV1.contains("Gr�n") && v2.getName().equals("Drink")) || (tupelV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
+            //5. Der Besitzer des gruenen Hauses trinkt Kaffee
+            if(((tupelV1.contains("Gruen") && v2.getName().equals("Drink")) || (tupelV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
                     Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Gr�n") && tupelV2.contains("Kaffee")) || tupelV1.contains("Kaffee") && tupelV2.contains("Gr�n"))
+                    if((tupelV1.contains("Gruen") && tupelV2.contains("Kaffee")) || tupelV1.contains("Kaffee") && tupelV2.contains("Gruen"))
                     if(directConstraint(tupelV1, tupelV2))
                     {
                         found = true;
@@ -491,11 +490,11 @@ public class Algorithm {
     private boolean gruen_links_weiss(Tupel tupelV1, Tupel tupelV2) {
 
         Tupel gruen, weiss;
-        if(tupelV1.getPart().equals("Gr�n") && tupelV2.getPart().equals("Wei�"))
+        if(tupelV1.getPart().equals("Gruen") && tupelV2.getPart().equals("Weiss"))
         {
             gruen = tupelV1;
             weiss = tupelV2;
-        }else if(tupelV2.getPart().equals("Gr�n") && tupelV1.getPart().equals("Wei�"))
+        }else if(tupelV2.getPart().equals("Gruen") && tupelV1.getPart().equals("Weiss"))
         {
             gruen = tupelV2;
             weiss = tupelV1;

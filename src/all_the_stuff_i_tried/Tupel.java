@@ -42,4 +42,8 @@ public class Tupel {
     public String getComponentName() {
         return componentName;
     }
+
+    public String toString() {
+      return "House no: " + houseNo + ", part: " + part + ", componentName: " + componentName;
+    }
 }

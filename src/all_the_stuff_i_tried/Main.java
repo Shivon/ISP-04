@@ -83,7 +83,7 @@ public class Main {
             {
                 nation.putTupel(new Tupel("Nation", i, "Brite"));
                 nation.putTupel(new Tupel("Nation",i, "Schwede"));
-                nation.putTupel(new Tupel("Nation",i, "Däne"));
+                nation.putTupel(new Tupel("Nation",i, "Daene"));
                 nation.putTupel(new Tupel("Nation",i, "Deutscher"));
             }
 
@@ -123,8 +123,8 @@ public class Main {
         for(int i = 1; i <= 5; i++)
         {
             farbe.putTupel(new Tupel("Farbe",i, "Rot"));
-            farbe.putTupel(new Tupel("Farbe",i, "Grün"));
-            farbe.putTupel(new Tupel("Farbe",i, "Weiß"));
+            farbe.putTupel(new Tupel("Farbe",i, "Gruen"));
+            farbe.putTupel(new Tupel("Farbe",i, "Weiss"));
             farbe.putTupel(new Tupel("Farbe",i, "Gelb"));
             farbe.putTupel(new Tupel("Farbe",i, "Blau"));
         }

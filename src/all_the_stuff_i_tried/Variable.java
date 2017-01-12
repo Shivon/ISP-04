@@ -9,6 +9,7 @@ public class Variable {
 
     List<Tupel> tupels;
     private String name;
+
     public Variable(String name)
     {
         tupels = new ArrayList<>();
@@ -88,7 +89,7 @@ public class Variable {
         List<Tupel> tupelsToDelete = new ArrayList<>();
         boolean found = false;
 
-        //Überprüfung ob Tupel im anderen Haus vorhanden ist, wenn nicht können alle andere gelöscht werden
+        //Ueberpruefen, ob Tupel im anderen Haus vorhanden ist, wenn nicht koennen alle andere geloescht werden
           for(Tupel t1 : tupels)
           {
               found = false;
@@ -106,7 +107,7 @@ public class Variable {
               }
           }
 
-        //Überprüfung ob Tupel als einziger für ein Haus ist, wenn ja, können Tupel in anderen Häuser gelöscht werden
+        //Ueberpruefen, ob Tupel als einziger fue ein Haus ist, wenn ja, koennen Tupel in anderen Haeuser geloescht werden
         for(Tupel t1 : tupels)
         {
             int count = 0;
@@ -156,7 +157,10 @@ public class Variable {
        return  delete;
     }
 
-
+    @Override
+    public String toString() {
+      return "Name: " + name + ", tupels: " + tupels.toString();
+    }
 
 
     private String getTupelName(int n1) {

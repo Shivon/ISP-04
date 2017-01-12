@@ -1,14 +1,14 @@
 class House
-  attr_accessor :house_numbers
+  attr_accessor :house_number
   attr_accessor :colours
   attr_accessor :nationalities
   attr_accessor :pets
   attr_accessor :beverages
   attr_accessor :cigarettes
 
-  def initialize
+  def initialize(house_number)
     # Instance variables
-    @house_numbers = [1, 2, 3, 4, 5]
+    @house_number = house_number
     @colours = [:red, :green, :white, :yellow, :blue]
     @nationalities = [:briton, :swede, :dane, :german, :norwegian]
     @pets = [:dog, :bird, :cat, :horse, :fish]
