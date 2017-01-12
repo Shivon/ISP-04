@@ -1,4 +1,26 @@
 ``` ruby
+# sagen wir mal ich hätte einen algo mit
+# Variablen: colours, nationalities, pets, beverages, cigarettes
+# Domain der jeweilige Wertebereich
+# Value = einzelner Wert der Domain, zB red
+#
+# Tuple in colours dann zB (1,red), (2,red), (3,red) usw usf für alle Hausnummern und alle Farben jeweils
+# Q = alle Variablentuple, für die es Constraints gibt, also (colour, nation) usw.
+#
+# revise aufrufen mit variablen farbe und nation, in Q werden alle Tuple gepackt,
+# die aktuell noch in farbe und nation sind
+# => über alle Tuple von Var1, also Farbe, iterieren und checken, ob constraint damit erfüllt, sonst löschen
+
+# in ac3 packe ich alle constraint tuple rein (= FullList), für die es halt constraint gibt, also (farbe, nation), (farbe, drink) usw
+# kopie von dieser liste machen, das dann Q
+# aus Q erstes Elem rauslöschen und damit revise aufrufen (hier die constraints geprüft)
+# wenn tuple gelöscht wurde aus Vk (zB Farbe), wird über FullList iteriert, geprüft,
+# ob Farbe noch in anderen Tuples enthalten ist zb (Zigarette, Farbe),
+# wenn ja und diese Tuples nicht in aktueller Q sind, werden sie wieder hinzugefügt
+# so lange bis Q leer oder nicht konsistent. wenn Q leer und consistent, true zurück, Algo durch
+
+
+
 # Vcv = next variable, procedure returns true when there are values for this variable which are consistent
 # (and only those values are afterwards still existent within the variable's domain)
 #

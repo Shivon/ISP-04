@@ -1,0 +1,12 @@
+Start new solving
+-------------------- Current domains:
+Colours:
+ [[3, :red], [4, :red], [5, :red], [4, :green], [4, :white], [5, :white], [1, :yellow], [3, :yellow], [4, :yellow], [5, :yellow], [2, :blue]]
+Nationalities:
+ [[2, :briton], [3, :briton], [4, :briton], [5, :briton], [2, :swede], [3, :swede], [4, :swede], [5, :swede], [2, :dane], [4, :dane], [5, :dane], [2, :german], [3, :german], [4, :german], [5, :german], [1, :norwegian]]
+Pets:
+ [[1, :dog], [2, :dog], [3, :dog], [4, :dog], [5, :dog], [1, :bird], [2, :bird], [3, :bird], [4, :bird], [5, :bird], [1, :cat], [2, :cat], [3, :cat], [4, :cat], [5, :cat], [1, :horse], [2, :horse], [3, :horse], [4, :horse], [5, :horse], [1, :fish], [2, :fish], [3, :fish], [4, :fish], [5, :fish]]
+Beverages:
+ [[1, :tea], [2, :tea], [4, :tea], [5, :tea], [1, :coffee], [2, :coffee], [4, :coffee], [5, :coffee], [3, :milk], [1, :beer], [2, :beer], [4, :beer], [5, :beer], [1, :water], [2, :water], [4, :water], [5, :water]]
+Cigarettes:
+ [[1, :pall_mall], [2, :pall_mall], [3, :pall_mall], [4, :pall_mall], [5, :pall_mall], [1, :dunhill], [2, :dunhill], [3, :dunhill], [4, :dunhill], [5, :dunhill], [1, :malboro], [2, :malboro], [3, :malboro], [4, :malboro], [5, :malboro], [1, :winfield], [2, :winfield], [3, :winfield], [4, :winfield], [5, :winfield], [1, :rothmanns], [2, :rothmanns], [3, :rothmanns], [4, :rothmanns], [5, :rothmanns]]
