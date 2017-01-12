@@ -47,11 +47,19 @@ class EinsteinRiddle
     # nun ac_3_look_ahead ?
 
     # constraint_tuples.each { |constraint_tuple| ac_3(constraint_tuple) }
+
+    print_current_domains
     @domain_log_file.close
   end
 
 
   private
+
+  def all_different
+    [@colours, @nationalities, @pets, @beverages, @cigarettes].each do |var|
+      var.definite_tuples.each { |tuple| var.set_value(tuple)}
+    end
+  end
 
   def ac_3(constraint_tuples)
     queue_constraint_tuples = constraint_tuples.clone
@@ -94,6 +102,7 @@ class EinsteinRiddle
 
       if !consistent
         values_vi.delete(value_tuple)
+        all_different
         delete_flag = true
       end
     end

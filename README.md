@@ -1,2 +1,2 @@
 # ISP-04
-Java: Constraint Solver with full look ahead, Einstein's Riddle
+Java/ Ruby: Constraint Solver with full look ahead, Einstein's Riddle

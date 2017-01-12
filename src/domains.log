@@ -1,7 +1,7 @@
 Start new solving
 -------------------- Current domains:
 Colours:
- [[3, :red], [4, :red], [5, :red], [4, :green], [4, :white], [5, :white], [1, :yellow], [3, :yellow], [4, :yellow], [5, :yellow], [2, :blue]]
+ [[3, :red], [4, :green], [5, :white], [1, :yellow], [2, :blue]]
 Nationalities:
  [[2, :briton], [3, :briton], [4, :briton], [5, :briton], [2, :swede], [3, :swede], [4, :swede], [5, :swede], [2, :dane], [4, :dane], [5, :dane], [2, :german], [3, :german], [4, :german], [5, :german], [1, :norwegian]]
 Pets:
