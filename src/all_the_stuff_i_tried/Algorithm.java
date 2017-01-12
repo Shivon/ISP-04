@@ -11,13 +11,13 @@ public class Algorithm {
 
     public void acOne(HashMap<String,Variable> variables)
     {
-        List<VariableTupel> variableTupels = new ArrayList<>();
+        List<Variabletuple> variabletuples = new ArrayList<>();
         for(Variable v1 : variables.values())
         {
             for(Variable v2 : variables.values())
             {
-                variableTupels.add(new VariableTupel(v1,v2));
-                variableTupels.add(new VariableTupel(v2,v1));
+                variabletuples.add(new Variabletuple(v1,v2));
+                variabletuples.add(new Variabletuple(v2,v1));
             }
         }
 
@@ -27,9 +27,9 @@ public class Algorithm {
 
             change = false;
 
-            for(VariableTupel vTupel : variableTupels){
-                Variable vk = vTupel.getV1();
-                Variable vm = vTupel.getV2();
+            for(Variabletuple vtuple : variabletuples){
+                Variable vk = vtuple.getV1();
+                Variable vm = vtuple.getV2();
 
                 change = revise(vk, vm);
                 if(change) break;
@@ -51,53 +51,53 @@ public class Algorithm {
     public boolean acThreeForLookahead(HashMap<String,Variable> variables)
     {
         this.variables = variables;
-        List<VariableTupel> variableTupels = new ArrayList<>();
+        List<Variabletuple> variabletuples = new ArrayList<>();
 
-        variableTupels.add(new VariableTupel(variables.get("Farbe"), variables.get("Nation")));
-        variableTupels.add(new VariableTupel(variables.get("Nation"), variables.get("Farbe")));
-        variableTupels.add(new VariableTupel(variables.get("Farbe"), variables.get("Drink")));
-        variableTupels.add(new VariableTupel(variables.get("Drink"), variables.get("Farbe")));
-        variableTupels.add(new VariableTupel(variables.get("Farbe"), variables.get("Zigarette")));
-        variableTupels.add(new VariableTupel(variables.get("Zigarette"), variables.get("Farbe")));
-        variableTupels.add(new VariableTupel(variables.get("Nation"), variables.get("Drink")));
-        variableTupels.add(new VariableTupel(variables.get("Drink"), variables.get("Nation")));
-        variableTupels.add(new VariableTupel(variables.get("Nation"), variables.get("Tier")));
-        variableTupels.add(new VariableTupel(variables.get("Tier"), variables.get("Nation")));
-        variableTupels.add(new VariableTupel(variables.get("Nation"), variables.get("Zigarette")));
-        variableTupels.add(new VariableTupel(variables.get("Zigarette"), variables.get("Nation")));
-        variableTupels.add(new VariableTupel(variables.get("Drink"), variables.get("Zigarette")));
-        variableTupels.add(new VariableTupel(variables.get("Zigarette"), variables.get("Drink")));
-        variableTupels.add(new VariableTupel(variables.get("Zigarette"), variables.get("Tier")));
-        variableTupels.add(new VariableTupel(variables.get("Tier"), variables.get("Zigarette")));
-        variableTupels.add(new VariableTupel(variables.get("Farbe"), variables.get("Farbe")));
+        variabletuples.add(new Variabletuple(variables.get("Farbe"), variables.get("Nation")));
+        variabletuples.add(new Variabletuple(variables.get("Nation"), variables.get("Farbe")));
+        variabletuples.add(new Variabletuple(variables.get("Farbe"), variables.get("Drink")));
+        variabletuples.add(new Variabletuple(variables.get("Drink"), variables.get("Farbe")));
+        variabletuples.add(new Variabletuple(variables.get("Farbe"), variables.get("Zigarette")));
+        variabletuples.add(new Variabletuple(variables.get("Zigarette"), variables.get("Farbe")));
+        variabletuples.add(new Variabletuple(variables.get("Nation"), variables.get("Drink")));
+        variabletuples.add(new Variabletuple(variables.get("Drink"), variables.get("Nation")));
+        variabletuples.add(new Variabletuple(variables.get("Nation"), variables.get("Tier")));
+        variabletuples.add(new Variabletuple(variables.get("Tier"), variables.get("Nation")));
+        variabletuples.add(new Variabletuple(variables.get("Nation"), variables.get("Zigarette")));
+        variabletuples.add(new Variabletuple(variables.get("Zigarette"), variables.get("Nation")));
+        variabletuples.add(new Variabletuple(variables.get("Drink"), variables.get("Zigarette")));
+        variabletuples.add(new Variabletuple(variables.get("Zigarette"), variables.get("Drink")));
+        variabletuples.add(new Variabletuple(variables.get("Zigarette"), variables.get("Tier")));
+        variabletuples.add(new Variabletuple(variables.get("Tier"), variables.get("Zigarette")));
+        variabletuples.add(new Variabletuple(variables.get("Farbe"), variables.get("Farbe")));
 
-        List<VariableTupel>variableTupels1 = new ArrayList<>(variableTupels);
+        List<Variabletuple>variabletuples1 = new ArrayList<>(variabletuples);
 
         boolean consistent = true;
 
-        while(!variableTupels.isEmpty() && consistent)
+        while(!variabletuples.isEmpty() && consistent)
         {
 
-            VariableTupel variableTupel = variableTupels.get(0);
-            variableTupels.remove(variableTupel);
-            Variable vk = variableTupel.getV1();
-            Variable vm = variableTupel.getV2();
+            Variabletuple variabletuple = variabletuples.get(0);
+            variabletuples.remove(variabletuple);
+            Variable vk = variabletuple.getV1();
+            Variable vm = variabletuple.getV2();
 
             if(revise(vk, vm))
             {
-                //union(variableTupel, variableTupels, variableTupels1);
+                //union(variabletuple, variabletuples, variabletuples1);
 
-                for(VariableTupel vt : variableTupels1)
+                for(Variabletuple vt : variabletuples1)
                 {
                     if(vt.contains(vk))
                     {
-                        if(!variableTupels.contains(vt))
+                        if(!variabletuples.contains(vt))
                         {
-                            variableTupels.add(vt);
+                            variabletuples.add(vt);
                         }
                     }
                 }
-                consistent = !variableTupel.getV1().isEmpty();
+                consistent = !variabletuple.getV1().isEmpty();
             }
         }
 
@@ -106,16 +106,16 @@ public class Algorithm {
 
     }
 
-    private void union(VariableTupel variableTupel, List<VariableTupel> variableTupels, List<VariableTupel> variableTupels1) {
-        Variable vk = variableTupel.getV1();
-        Variable vm = variableTupel.getV2();
+    private void union(Variabletuple variabletuple, List<Variabletuple> variabletuples, List<Variabletuple> variabletuples1) {
+        Variable vk = variabletuple.getV1();
+        Variable vm = variabletuple.getV2();
 
-        for(VariableTupel vt : variableTupels1)
+        for(Variabletuple vt : variabletuples1)
         {
             if(vt.getV2().equals(vk))
             {
-                if(!variableTupels.contains(vt))
-                    variableTupels.add(vt);
+                if(!variabletuples.contains(vt))
+                    variabletuples.add(vt);
             }
         }
     }
@@ -131,19 +131,19 @@ public class Algorithm {
 
         while(iteratorV1.hasNext())
         {
-            Tupel tupelV1 = (Tupel) iteratorV1.next();
+            tuple tupleV1 = (tuple) iteratorV1.next();
             Iterator iteratorV2 = v2.iterator();
 
 
             //1. Der Brite lebt im roten Haus
-            if(((tupelV1.contains("Brite") && v2.getName().equals("Farbe")) || (tupelV1.contains("Rot") && v2.getName().equals("Nation"))))
+            if(((tupleV1.contains("Brite") && v2.getName().equals("Farbe")) || (tupleV1.contains("Rot") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Brite") && tupelV2.contains("Rot")) || tupelV1.contains("Rot") && tupelV2.contains("Brite"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Brite") && tupleV2.contains("Rot")) || tupleV1.contains("Rot") && tupleV2.contains("Brite"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -153,7 +153,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -161,14 +161,14 @@ public class Algorithm {
             }
 
             //2. Der Schwede hält sich einen Hund.
-            if(((tupelV1.contains("Schwede") && v2.getName().equals("Tier")) || (tupelV1.contains("Hund") && v2.getName().equals("Nation"))))
+            if(((tupleV1.contains("Schwede") && v2.getName().equals("Tier")) || (tupleV1.contains("Hund") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Schwede") && tupelV2.contains("Hund")) || tupelV1.contains("Hund") && tupelV2.contains("Schwede"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Schwede") && tupleV2.contains("Hund")) || tupleV1.contains("Hund") && tupleV2.contains("Schwede"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -178,7 +178,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -186,14 +186,14 @@ public class Algorithm {
             }
 
             //3. Der Daene trinkt gern Tee.
-            if(((tupelV1.contains("Daene") && v2.getName().equals("Drink")) || (tupelV1.contains("Tee") && v2.getName().equals("Nation"))))
+            if(((tupleV1.contains("Daene") && v2.getName().equals("Drink")) || (tupleV1.contains("Tee") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Daene") && tupelV2.contains("Tee")) || tupelV1.contains("Tee") && tupelV2.contains("Daene"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Daene") && tupleV2.contains("Tee")) || tupleV1.contains("Tee") && tupleV2.contains("Daene"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -203,7 +203,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -211,13 +211,13 @@ public class Algorithm {
             }
 
             //4. Das gruene Haus steht links neben dem wei�en Haus.
-            if((tupelV1.contains("Gruen") || tupelV1.contains("Weiss")) && v2.getName().equals("Farbe"))
+            if((tupleV1.contains("Gruen") || tupleV1.contains("Weiss")) && v2.getName().equals("Farbe"))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if(gruen_links_weiss(tupelV1,tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if(gruen_links_weiss(tupleV1,tupleV2))
                     {
                         found = true;
                         break;
@@ -227,7 +227,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -235,14 +235,14 @@ public class Algorithm {
             }
 
             //5. Der Besitzer des gruenen Hauses trinkt Kaffee
-            if(((tupelV1.contains("Gruen") && v2.getName().equals("Drink")) || (tupelV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
+            if(((tupleV1.contains("Gruen") && v2.getName().equals("Drink")) || (tupleV1.contains("Kaffee") && v2.getName().equals("Farbe"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Gruen") && tupelV2.contains("Kaffee")) || tupelV1.contains("Kaffee") && tupelV2.contains("Gruen"))
-                    if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Gruen") && tupleV2.contains("Kaffee")) || tupleV1.contains("Kaffee") && tupleV2.contains("Gruen"))
+                    if(directConstraint(tupleV1, tupleV2))
                     {
                         found = true;
                         break;
@@ -252,7 +252,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -260,14 +260,14 @@ public class Algorithm {
             }
 
             //6. Die Person, die Pall Mall raucht, hat einen Vogel.
-            if(((tupelV1.contains("Pall-Mall") && v2.getName().equals("Tier")) || (tupelV1.contains("Vogel") && v2.getName().equals("Zigarette"))))
+            if(((tupleV1.contains("Pall-Mall") && v2.getName().equals("Tier")) || (tupleV1.contains("Vogel") && v2.getName().equals("Zigarette"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Pall-Mall") && tupelV2.contains("Vogel")) || tupelV1.contains("Vogel") && tupelV2.contains("Pall-Mall"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Pall-Mall") && tupleV2.contains("Vogel")) || tupleV1.contains("Vogel") && tupleV2.contains("Pall-Mall"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -277,7 +277,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -285,14 +285,14 @@ public class Algorithm {
             }
 
             //8. Der Bewohner des gelben Hauses raucht Dunhill.
-            if(((tupelV1.contains("Gelb") && v2.getName().equals("Zigarette")) || (tupelV1.contains("Dunhill") && v2.getName().equals("Farbe"))))
+            if(((tupleV1.contains("Gelb") && v2.getName().equals("Zigarette")) || (tupleV1.contains("Dunhill") && v2.getName().equals("Farbe"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Gelb") && tupelV2.contains("Dunhill")) || tupelV1.contains("Dunhill") && tupelV2.contains("Gelb"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Gelb") && tupleV2.contains("Dunhill")) || tupleV1.contains("Dunhill") && tupleV2.contains("Gelb"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -302,7 +302,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -310,14 +310,14 @@ public class Algorithm {
             }
 
             //10. Der Malboro-Raucher wohnt neben der Person mit der Katze
-            if(((tupelV1.contains("Malboro") && v2.getName().equals("Tier")) || (tupelV1.contains("Katze") && v2.getName().equals("Zigarette"))))
+            if(((tupleV1.contains("Malboro") && v2.getName().equals("Tier")) || (tupleV1.contains("Katze") && v2.getName().equals("Zigarette"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Malboro") && tupelV2.contains("Katze")) || tupelV1.contains("Katze") && tupelV2.contains("Malboro"))
-                        if(neighbor(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Malboro") && tupleV2.contains("Katze")) || tupleV1.contains("Katze") && tupleV2.contains("Malboro"))
+                        if(neighbor(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -327,7 +327,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -335,14 +335,14 @@ public class Algorithm {
             }
 
             //11. Der Mann mit dem Pferd lebt neben der Person, die Dunhill raucht.
-            if(((tupelV1.contains("Dunhill") && v2.getName().equals("Tier")) || (tupelV1.contains("Pferd") && v2.getName().equals("Zigarette"))))
+            if(((tupleV1.contains("Dunhill") && v2.getName().equals("Tier")) || (tupleV1.contains("Pferd") && v2.getName().equals("Zigarette"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Dunhill") && tupelV2.contains("Pferd")) || tupelV1.contains("Pferd") && tupelV2.contains("Dunhill"))
-                        if(neighbor(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Dunhill") && tupleV2.contains("Pferd")) || tupleV1.contains("Pferd") && tupleV2.contains("Dunhill"))
+                        if(neighbor(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -352,7 +352,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -360,14 +360,14 @@ public class Algorithm {
             }
 
             //12. Der Winfield-Raucher trinkt gern Bier.
-            if(((tupelV1.contains("Bier") && v2.getName().equals("Zigarette")) || (tupelV1.contains("Winfield") && v2.getName().equals("Drink"))))
+            if(((tupleV1.contains("Bier") && v2.getName().equals("Zigarette")) || (tupleV1.contains("Winfield") && v2.getName().equals("Drink"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Bier") && tupelV2.contains("Winfield")) || tupelV1.contains("Winfield") && tupelV2.contains("Bier"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Bier") && tupleV2.contains("Winfield")) || tupleV1.contains("Winfield") && tupleV2.contains("Bier"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -377,7 +377,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -385,14 +385,14 @@ public class Algorithm {
             }
 
             //13. Der Norweger wohnt neben dem blauen Haus
-            if(((tupelV1.contains("Norweger") && v2.getName().equals("Farbe")) || (tupelV1.contains("Blau") && v2.getName().equals("Nation"))))
+            if(((tupleV1.contains("Norweger") && v2.getName().equals("Farbe")) || (tupleV1.contains("Blau") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Norweger") && tupelV2.contains("Blau")) || tupelV1.contains("Blau") && tupelV2.contains("Norweger"))
-                        if(neighbor(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Norweger") && tupleV2.contains("Blau")) || tupleV1.contains("Blau") && tupleV2.contains("Norweger"))
+                        if(neighbor(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -402,7 +402,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -410,14 +410,14 @@ public class Algorithm {
             }
 
             //14. Der Deutsche raucht Rothmanns.
-            if(((tupelV1.contains("Deutscher") && v2.getName().equals("Zigarette")) || (tupelV1.contains("Rothmann") && v2.getName().equals("Nation"))))
+            if(((tupleV1.contains("Deutscher") && v2.getName().equals("Zigarette")) || (tupleV1.contains("Rothmann") && v2.getName().equals("Nation"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Deutscher") && tupelV2.contains("Rothmann")) || tupelV1.contains("Rothmann") && tupelV2.contains("Deutscher"))
-                        if(directConstraint(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Deutscher") && tupleV2.contains("Rothmann")) || tupleV1.contains("Rothmann") && tupleV2.contains("Deutscher"))
+                        if(directConstraint(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -427,7 +427,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -435,14 +435,14 @@ public class Algorithm {
             }
 
             //15. Der Malboro-Raucher hat einen Nachbarn, der Wasser trinkt.
-            if(((tupelV1.contains("Malboro") && v2.getName().equals("Drink")) || (tupelV1.contains("Wasser") && v2.getName().equals("Zigarette"))))
+            if(((tupleV1.contains("Malboro") && v2.getName().equals("Drink")) || (tupleV1.contains("Wasser") && v2.getName().equals("Zigarette"))))
             {
                 boolean found = false;
                 while(iteratorV2.hasNext())
                 {
-                    Tupel tupelV2 = (Tupel) iteratorV2.next();
-                    if((tupelV1.contains("Malboro") && tupelV2.contains("Wasser")) || tupelV1.contains("Wasser") && tupelV2.contains("Malboro"))
-                        if(neighbor(tupelV1, tupelV2))
+                    tuple tupleV2 = (tuple) iteratorV2.next();
+                    if((tupleV1.contains("Malboro") && tupleV2.contains("Wasser")) || tupleV1.contains("Wasser") && tupleV2.contains("Malboro"))
+                        if(neighbor(tupleV1, tupleV2))
                         {
                             found = true;
                             break;
@@ -452,7 +452,7 @@ public class Algorithm {
 
                 if(!found)
                 {
-                    v1.deleteTupel(tupelV1);
+                    v1.deletetuple(tupleV1);
                     if(!delete)
                         delete = true;
                     break;
@@ -472,8 +472,8 @@ public class Algorithm {
         return delete;
     }
 
-    private boolean neighbor(Tupel tupelV1, Tupel tupelV2) {
-        int difference = tupelV1.getHouseNo() - tupelV2.getHouseNo();
+    private boolean neighbor(tuple tupleV1, tuple tupleV2) {
+        int difference = tupleV1.getHouseNo() - tupleV2.getHouseNo();
 
         if(difference == 1) return true;
         if(difference == -1) return true;
@@ -481,23 +481,23 @@ public class Algorithm {
         return false;
     }
 
-    private boolean directConstraint(Tupel tupelV1, Tupel tupelV2) {
-        int houseNo = tupelV1.getHouseNo();
-        if(tupelV2.equals(houseNo, tupelV2.getPart())) return true;
+    private boolean directConstraint(tuple tupleV1, tuple tupleV2) {
+        int houseNo = tupleV1.getHouseNo();
+        if(tupleV2.equals(houseNo, tupleV2.getPart())) return true;
         return false;
     }
 
-    private boolean gruen_links_weiss(Tupel tupelV1, Tupel tupelV2) {
+    private boolean gruen_links_weiss(tuple tupleV1, tuple tupleV2) {
 
-        Tupel gruen, weiss;
-        if(tupelV1.getPart().equals("Gruen") && tupelV2.getPart().equals("Weiss"))
+        tuple gruen, weiss;
+        if(tupleV1.getPart().equals("Gruen") && tupleV2.getPart().equals("Weiss"))
         {
-            gruen = tupelV1;
-            weiss = tupelV2;
-        }else if(tupelV2.getPart().equals("Gruen") && tupelV1.getPart().equals("Weiss"))
+            gruen = tupleV1;
+            weiss = tupleV2;
+        }else if(tupleV2.getPart().equals("Gruen") && tupleV1.getPart().equals("Weiss"))
         {
-            gruen = tupelV2;
-            weiss = tupelV1;
+            gruen = tupleV2;
+            weiss = tupleV1;
         }else
         {
             return false;

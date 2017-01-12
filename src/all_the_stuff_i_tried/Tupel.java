@@ -1,12 +1,12 @@
 /**
  * Created by Murat on 20.12.2016.
  */
-public class Tupel {
+public class tuple {
     private int houseNo;
     private String part;
     private String componentName;
 
-    public Tupel(String componentName, int houseNo, String part)
+    public tuple(String componentName, int houseNo, String part)
     {
         this.componentName = componentName;
         this.houseNo = houseNo;
@@ -28,7 +28,7 @@ public class Tupel {
         return true;
     }
 
-    public void showTupel()
+    public void showtuple()
     {
         System.out.println("(" + houseNo + "," + part + ")");
     }

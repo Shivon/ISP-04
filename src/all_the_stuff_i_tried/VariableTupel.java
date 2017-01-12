@@ -1,11 +1,11 @@
 /**
  * Created by murat on 15.12.16.
  */
-public class VariableTupel {
+public class Variabletuple {
     private Variable v1;
     private Variable v2;
 
-    public VariableTupel(Variable variable1, Variable variable2)
+    public Variabletuple(Variable variable1, Variable variable2)
     {
         v1 = variable1;
         v2 = variable2;

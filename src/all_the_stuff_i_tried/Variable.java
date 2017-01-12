@@ -7,31 +7,31 @@ import java.util.List;
  */
 public class Variable {
 
-    List<Tupel> tupels;
+    List<tuple> tuples;
     private String name;
 
     public Variable(String name)
     {
-        tupels = new ArrayList<>();
+        tuples = new ArrayList<>();
         this.name = name;
     }
 
-    public void putTupel(Tupel t)
+    public void puttuple(tuple t)
     {
-        tupels.add(t);
+        tuples.add(t);
     }
 
     public void showVariable()
     {
-        for (Tupel t : tupels)
+        for (tuple t : tuples)
         {
-            t.showTupel();
+            t.showtuple();
         }
     }
 
     public boolean isEmpty()
     {
-        return tupels.isEmpty();
+        return tuples.isEmpty();
     }
     public boolean equals(Variable v)
     {
@@ -41,29 +41,29 @@ public class Variable {
 
     public boolean contains(int houseNo, String p)
     {
-        for(Tupel tupel : tupels)
+        for(tuple tuple : tuples)
         {
-            if(tupel.equals(houseNo, p)) return true;
+            if(tuple.equals(houseNo, p)) return true;
         }
         return false;
     }
 
-    public List<Tupel> GetAllTupelsWithPart(String part)
+    public List<tuple> GetAlltuplesWithPart(String part)
     {
-        List<Tupel> allTupelsWithPart = new ArrayList<>();
-        for(Tupel t : tupels)
+        List<tuple> alltuplesWithPart = new ArrayList<>();
+        for(tuple t : tuples)
         {
             if(t.contains(part))
             {
-                allTupelsWithPart.add(t);
+                alltuplesWithPart.add(t);
             }
         }
 
-        return allTupelsWithPart;
+        return alltuplesWithPart;
     }
 
     public int GetHouseNo(String part) {
-        for(Tupel t : tupels)
+        for(tuple t : tuples)
         {
             if(t.contains(part)) return t.getHouseNo();
         }
@@ -73,12 +73,12 @@ public class Variable {
 
     public Iterator iterator()
     {
-        List<Tupel> t = new ArrayList<>(tupels);
+        List<tuple> t = new ArrayList<>(tuples);
         return t.iterator();
     }
 
-    public void deleteTupel(Tupel tupel) {
-        tupels.remove(tupel);
+    public void deletetuple(tuple tuple) {
+        tuples.remove(tuple);
 
 
 
@@ -86,14 +86,14 @@ public class Variable {
 
     public boolean flat()
     {
-        List<Tupel> tupelsToDelete = new ArrayList<>();
+        List<tuple> tuplesToDelete = new ArrayList<>();
         boolean found = false;
 
-        //Ueberpruefen, ob Tupel im anderen Haus vorhanden ist, wenn nicht koennen alle andere geloescht werden
-          for(Tupel t1 : tupels)
+        //Ueberpruefen, ob tuple im anderen Haus vorhanden ist, wenn nicht koennen alle andere geloescht werden
+          for(tuple t1 : tuples)
           {
               found = false;
-              for(Tupel t2 : tupels)
+              for(tuple t2 : tuples)
               {
                   if((t1.getHouseNo() != t2.getHouseNo()) && t1.getPart().equals(t2.getPart()))
                   {
@@ -103,15 +103,15 @@ public class Variable {
               }
               if(!found)
               {
-                  tupelsToDelete.add(t1);
+                  tuplesToDelete.add(t1);
               }
           }
 
-        //Ueberpruefen, ob Tupel als einziger fue ein Haus ist, wenn ja, koennen Tupel in anderen Haeuser geloescht werden
-        for(Tupel t1 : tupels)
+        //Ueberpruefen, ob tuple als einziger fue ein Haus ist, wenn ja, koennen tuple in anderen Haeuser geloescht werden
+        for(tuple t1 : tuples)
         {
             int count = 0;
-            for(Tupel t2 : tupels)
+            for(tuple t2 : tuples)
             {
                 if(t1.getHouseNo() == t2.getHouseNo())
                 {
@@ -120,9 +120,9 @@ public class Variable {
             }
             if(count == 1)
             {
-                if(!tupelsToDelete.contains(t1))
+                if(!tuplesToDelete.contains(t1))
                 {
-                    tupelsToDelete.add(t1);
+                    tuplesToDelete.add(t1);
                 }
             }
         }
@@ -130,25 +130,25 @@ public class Variable {
         boolean delete = false;
 
 
-        List<Tupel> tu = new ArrayList<>(tupels);
+        List<tuple> tu = new ArrayList<>(tuples);
 
-        for(Tupel t : tupelsToDelete)
+        for(tuple t : tuplesToDelete)
         {
-            for(Tupel t1 : tu)
+            for(tuple t1 : tu)
             {
                 if(t.getHouseNo() == t1.getHouseNo())
                 {
                     if(!t.getPart().equals(t1.getPart()))
                     {
                         delete = true;
-                        tupels.remove(t1);
+                        tuples.remove(t1);
                     }
                 }else
                 {
                     if(t.getPart().equals(t1.getPart()))
                     {
                         delete = true;
-                        tupels.remove(t1);
+                        tuples.remove(t1);
                     }
                 }
             }
@@ -159,12 +159,12 @@ public class Variable {
 
     @Override
     public String toString() {
-      return "Name: " + name + ", tupels: " + tupels.toString();
+      return "Name: " + name + ", tuples: " + tuples.toString();
     }
 
 
-    private String getTupelName(int n1) {
-        for(Tupel t : tupels)
+    private String gettupleName(int n1) {
+        for(tuple t : tuples)
         {
             if(t.getHouseNo() == n1)
             {

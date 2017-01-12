@@ -34,7 +34,7 @@ public class Main {
             Iterator iterator = v.iterator();
             while(iterator.hasNext())
             {
-                Tupel t = (Tupel) iterator.next();
+                tuple t = (tuple) iterator.next();
 
                 if(t.getHouseNo() == 1)
                 {
@@ -78,13 +78,13 @@ public class Main {
         {
 
             if(i == 1){
-                nation.putTupel(new Tupel("Nation",i, "Norweger"));
+                nation.puttuple(new tuple("Nation",i, "Norweger"));
             }else
             {
-                nation.putTupel(new Tupel("Nation", i, "Brite"));
-                nation.putTupel(new Tupel("Nation",i, "Schwede"));
-                nation.putTupel(new Tupel("Nation",i, "Daene"));
-                nation.putTupel(new Tupel("Nation",i, "Deutscher"));
+                nation.puttuple(new tuple("Nation", i, "Brite"));
+                nation.puttuple(new tuple("Nation",i, "Schwede"));
+                nation.puttuple(new tuple("Nation",i, "Daene"));
+                nation.puttuple(new tuple("Nation",i, "Deutscher"));
             }
 
         }
@@ -96,12 +96,12 @@ public class Main {
 
 
             if(i == 3) {
-                drink.putTupel(new Tupel("Drink", i, "Milch"));
+                drink.puttuple(new tuple("Drink", i, "Milch"));
             }else{
-                drink.putTupel(new Tupel("Drink", i, "Tee"));
-                drink.putTupel(new Tupel("Drink",i, "Kaffee"));
-                drink.putTupel(new Tupel("Drink",i, "Bier"));
-                drink.putTupel(new Tupel("Drink",i, "Wasser"));
+                drink.puttuple(new tuple("Drink", i, "Tee"));
+                drink.puttuple(new tuple("Drink",i, "Kaffee"));
+                drink.puttuple(new tuple("Drink",i, "Bier"));
+                drink.puttuple(new tuple("Drink",i, "Wasser"));
             }
 
 
@@ -111,33 +111,33 @@ public class Main {
 
         for(int i = 1; i <= 5; i++)
         {
-            tier.putTupel(new Tupel("Tier", i, "Hund"));
-            tier.putTupel(new Tupel("Tier",i, "Vogel"));
-            tier.putTupel(new Tupel("Tier",i, "Katze"));
-            tier.putTupel(new Tupel("Tier",i, "Pferd"));
-            tier.putTupel(new Tupel("Tier",i, "Fisch"));
+            tier.puttuple(new tuple("Tier", i, "Hund"));
+            tier.puttuple(new tuple("Tier",i, "Vogel"));
+            tier.puttuple(new tuple("Tier",i, "Katze"));
+            tier.puttuple(new tuple("Tier",i, "Pferd"));
+            tier.puttuple(new tuple("Tier",i, "Fisch"));
         }
 
         Variable farbe = new Variable("Farbe");
 
         for(int i = 1; i <= 5; i++)
         {
-            farbe.putTupel(new Tupel("Farbe",i, "Rot"));
-            farbe.putTupel(new Tupel("Farbe",i, "Gruen"));
-            farbe.putTupel(new Tupel("Farbe",i, "Weiss"));
-            farbe.putTupel(new Tupel("Farbe",i, "Gelb"));
-            farbe.putTupel(new Tupel("Farbe",i, "Blau"));
+            farbe.puttuple(new tuple("Farbe",i, "Rot"));
+            farbe.puttuple(new tuple("Farbe",i, "Gruen"));
+            farbe.puttuple(new tuple("Farbe",i, "Weiss"));
+            farbe.puttuple(new tuple("Farbe",i, "Gelb"));
+            farbe.puttuple(new tuple("Farbe",i, "Blau"));
         }
 
         Variable zigarette = new Variable("Zigarette");
 
         for(int i = 1; i <= 5; i++)
         {
-            zigarette.putTupel(new Tupel("Zigarette",i, "Pall-Mall"));
-            zigarette.putTupel(new Tupel("Zigarette",i, "Dunhill"));
-            zigarette.putTupel(new Tupel("Zigarette",i, "Malboro"));
-            zigarette.putTupel(new Tupel("Zigarette",i, "Winfield"));
-            zigarette.putTupel(new Tupel("Zigarette",i, "Rothmann"));
+            zigarette.puttuple(new tuple("Zigarette",i, "Pall-Mall"));
+            zigarette.puttuple(new tuple("Zigarette",i, "Dunhill"));
+            zigarette.puttuple(new tuple("Zigarette",i, "Malboro"));
+            zigarette.puttuple(new tuple("Zigarette",i, "Winfield"));
+            zigarette.puttuple(new tuple("Zigarette",i, "Rothmann"));
         }
 
         component.put("Nation", nation);

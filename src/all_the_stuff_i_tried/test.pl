@@ -53,7 +53,7 @@ assignHouseNumbers([First | Rest], ResultList) :-
     % end REVISE
 
     % procedure AC-3
-    %  % Q = alle Variablentupel, die in einer Beziehung zueinander stehen (also einen Constraint erfüllen müssen)
+    %  % Q = alle Variablentuple, die in einer Beziehung zueinander stehen (also einen Constraint erfüllen müssen)
     %  % Bsp: X * 2 = Z  und  Y < X, daraus ergibt sich Q = {(X,Z), (Z,X), (Y,X), (X,Y)}
     %  Q <- {(Vi,Vj) in arcs(G),i#j}; # d.h. i != j
     %  while not Q empty
